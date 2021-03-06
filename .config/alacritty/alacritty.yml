@@ -1,0 +1,46 @@
+colors:
+  primary:
+    background: '0x282828'
+    foreground: '0xebdbb2'
+  normal:
+    black:   '0x1c1b19'
+    red:     '0xe84a43'
+    green:   '0x5aba59'
+    yellow:  '0xfbb829'
+    blue:    '0x2c78bf'
+    magenta: '0xb16286'
+    cyan:    '0x0aaeb3'
+    white:   '0xd0bfa1'
+
+  # Bright colors
+  bright:
+    black:   '0x918175'
+    red:     '0xf75341'
+    green:   '0x98bc37'
+    yellow:  '0xfed06e'
+    blue:    '0x68a8e4'
+    magenta: '0xff5c8f'
+    cyan:    '0x53fde9'
+    white:   '0xfce8c3'
+
+font:
+  size: 9.0
+  use_thin_strokes: true
+
+  normal: 
+    family: Iosevka Custom
+    style: Regular
+  bold:
+    family: Iosevka Custom
+    style: Bold
+  italic:
+    family: Iosevka Custom
+    style: Italic
+  offset:
+    x: 0
+    y: 4
+
+window:
+  padding:
+    x: 10
+    y: 10
