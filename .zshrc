@@ -137,6 +137,7 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Aliases
+alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 
@@ -144,5 +145,6 @@ alias dotfiles='/usr/bin/git --git-dir=/home/tyler/.dotfiles/ --work-tree=/home/
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias initvim="nvim ~/.config/nvim/init.vim"
+alias alacrittycfg="nvim ~/.config/alacritty/alacritty.yml"
 
 alias ls="ls -A --color=auto"
