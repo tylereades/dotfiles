@@ -8,6 +8,18 @@
   "workbench.colorCustomizations": {
     "editor.background": "#000000"
   },
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["k", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.leader": "<space>",
   "[sass]": {
     "editor.tabSize": 2
   },
