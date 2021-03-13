@@ -9,6 +9,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'drewtempelmeyer/palenight.vim'
 
+Plug 'norcalli/nvim-colorizer.lua'
+
 " Collection of common configurations for the Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
 
@@ -25,12 +27,15 @@ call plug#end()
 " Colors {{{
 syntax on
 colorscheme palenight
+set termguicolors
 " }}}
 
 " Spaces and Tabs {{{
 set expandtab
 set modelines=1
 filetype plugin indent on
+autocmd BufNewFile,BufRead *.ts,*.js set filetype=typescript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 " }}}
 
 " UI Layout {{{
@@ -85,6 +90,9 @@ set shortmess+=c
 
 " Configure LSP
 " https://github.com/neovim/nvim-lspconfig#rust_analyzer
+" Language Server Install Commands
+"   npm install -g typescript-language-server vscode-html-languageserver-bin vscode-css-languageserver-bin vscode-json-languageserver-bin
+
 lua <<EOF
 
 -- nvim_lsp object
@@ -97,6 +105,7 @@ end
 
 -- Enable rust_analyzer
 nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+nvim_lsp.tsserver.setup({ on_attach=on_attach })
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -147,5 +156,7 @@ require'nvim-treesitter.configs'.setup {
   -- Modules and its options go here
   highlight = { enable = true },
 }
+
+require'colorizer'.setup()
 EOF
 

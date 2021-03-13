@@ -146,5 +146,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias initvim="nvim ~/.config/nvim/init.vim"
 alias alacrittycfg="nvim ~/.config/alacritty/alacritty.yml"
+alias i3cfg="nvim ~/.config/i3/config"
+alias polybarcfg="nvim ~/.config/polybar/config"
 
 alias ls="ls -A --color=auto"
