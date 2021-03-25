@@ -4,7 +4,7 @@
   "terminal.external.linuxExec": "/usr/bin/alacritty",
   "terminal.integrated.fontFamily": "Iosevka Custom",
   "terminal.integrated.fontSize": "14",
-  "workbench.colorTheme": "Palenight Theme",
+  "workbench.colorTheme": "Palenight Italic",
   "workbench.colorCustomizations": {
     "editor.background": "#000000"
   },

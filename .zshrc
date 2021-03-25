@@ -150,3 +150,5 @@ alias i3cfg="nvim ~/.config/i3/config"
 alias polybarcfg="nvim ~/.config/polybar/config"
 
 alias ls="ls -A --color=auto"
+
+PATH=”$PATH:/usr/bin/python3.8”
