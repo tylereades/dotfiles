@@ -45,3 +45,12 @@ After securely backing up your old Mac, you can now follow the installation inst
 6. Restart your computer to finalize the setup process.
 
 Congratulations! Your Mac is now ready to be used!
+
+# Using on a second machine
+
+    ```zsh
+    alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    git clone --bare git@github.com:tylereades/dotfiles.git $HOME/.dotfiles
+    dotfiles config --local status.showUntrackedFiles no
+    dotfiles checkout
+    ```
