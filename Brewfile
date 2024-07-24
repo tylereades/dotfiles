@@ -3,7 +3,7 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' # To be able to use run `brew bundle` to install all apps - https://medium.com/@satorusasozaki/automate-mac-os-x-configuration-by-using-brewfile-58a78ce5cc53
 
 
-brew 'aws-cli'
+brew 'awscli'
 brew 'aws-cdk'
 brew 'fd'
 brew 'go'
