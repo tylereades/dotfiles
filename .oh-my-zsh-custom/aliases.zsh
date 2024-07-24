@@ -12,6 +12,7 @@ alias v="nvim"
 # Directories
 alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
+alias gohome="cd $HOME"
 
 alias zshrc="nvim ~/.zshrc"
 alias sourcezsh="source ~/.zshrc"

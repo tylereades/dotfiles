@@ -5,7 +5,9 @@ tap 'homebrew/bundle' # To be able to use run `brew bundle` to install all apps 
 
 brew 'aws-cli'
 brew 'aws-cdk'
+brew 'fd'
 brew 'go'
+brew 'jesseduffield/lazygit/lazygit'
 brew 'luarocks'
 brew 'neovim'
 brew 'nvm'
