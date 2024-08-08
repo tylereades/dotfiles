@@ -26,3 +26,8 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 alias venv="source .venv/bin/activate"
+
+via() {
+  $EDITOR $(git ls-files --modified --others --exclude-standard) $@
+}
+alias vm=via
