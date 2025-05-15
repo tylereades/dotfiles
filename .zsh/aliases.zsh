@@ -13,6 +13,7 @@ alias v="nvim"
 alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
 alias gohome="cd $HOME"
+alias zprojects="cd $HOME/projects/zillow"
 
 alias zshrc="nvim ~/.zshrc"
 alias sourcezsh="source ~/.zshrc"
@@ -31,3 +32,10 @@ via() {
   $EDITOR $(git ls-files --modified --others --exclude-standard) $@
 }
 alias vm=via
+
+alias dockerstopall='docker stop $(docker ps -a -q)'
+alias dils='docker image ls'
+alias dirm='docker image rm'
+alias dcls='docker ps'
+alias dsp='docker system prune'
+alias dspf='docker system prune -f'

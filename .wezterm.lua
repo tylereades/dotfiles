@@ -9,6 +9,7 @@ config.default_cwd = "$HOME"
 
 -- For example, changing the color scheme:
 config.color_scheme = "Tokyo Night Moon"
+-- config.color_scheme = "Tokyo Night Day"
 
 config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.font_size = 16
