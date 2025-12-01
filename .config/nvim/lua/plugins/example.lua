@@ -46,6 +46,11 @@ return {
   },
 
   {
+    "ibhagwan/fzf-lua",
+    enabled = false,
+  },
+
+  {
     "stevearc/oil.nvim",
     config = function()
       require("oil").setup({
