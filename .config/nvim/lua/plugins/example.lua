@@ -40,9 +40,30 @@ return {
     end,
   },
 
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
+  },
+
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup({
+        keymaps = {
+          ["<Esc>"] = "actions.close",
+        },
+      })
+    end,
+    keys = {
+      { "=", "<cmd>Oil<cr>", mode = "n", desc = "Open Filesystem" },
+      { "-", "<cmd>Oil --float<cr>", mode = "n", desc = "Open Floating Filesystem" },
+    },
+  },
+
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
+    enabled = false,
     keys = {
       -- add a keymap to browse plugin files
       -- stylua: ignore
@@ -121,6 +142,7 @@ return {
     opts = {
       ensure_installed = {
         "bash",
+        "go",
         "html",
         "javascript",
         "json",

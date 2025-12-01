@@ -19,3 +19,5 @@ SAVEHIST=10000
 setopt appendhistory
 
 eval "$(starship init zsh)"
+
+. "$HOME/.cargo/env"

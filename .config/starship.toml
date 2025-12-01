@@ -12,6 +12,9 @@ add_newline = true
 [docker_context]
 disabled = true
 
+[aws]
+disabled = true
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
