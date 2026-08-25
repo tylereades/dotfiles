@@ -5,6 +5,7 @@ tap 'homebrew/bundle' # To be able to use run `brew bundle` to install all apps 
 
 brew 'awscli'
 brew 'aws-cdk'
+brew 'aws-sam-cli'
 brew 'background-music'
 brew 'cookiecutter'
 brew 'databricks'

@@ -21,3 +21,4 @@ setopt appendhistory
 eval "$(starship init zsh)"
 
 . "$HOME/.cargo/env"
+export PATH="$HOME/.local/bin:$PATH"
