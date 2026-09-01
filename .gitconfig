@@ -1,11 +1,12 @@
-[user]
-	name = Tyler Eades
-	email = tylerea@zillowgroup.com
+# Identity is machine-specific and deliberately NOT tracked.
+# On a new machine: cp .gitconfig-identity.example ~/.gitconfig-identity
+# and fill in the right name/email for that machine.
+[include]
+	path = ~/.gitconfig-identity
 
-[includeIf "gitdir:~/.dotfiles/"]
-	path = ~/.gitconfig-personal
 [init]
-  defaultBranch = main
+	defaultBranch = main
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
