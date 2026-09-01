@@ -1,6 +1,9 @@
 [user]
-	name = tylerea
+	name = Tyler Eades
 	email = tylerea@zillowgroup.com
+
+[includeIf "gitdir:~/.dotfiles/"]
+	path = ~/.gitconfig-personal
 [init]
   defaultBranch = main
 [filter "lfs"]
