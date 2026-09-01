@@ -14,13 +14,18 @@ purpose: only explicitly-tracked files ever show up in `status`/`diff`, so
 random junk in `$HOME` (secrets, caches, app data) can't get swept in by an
 `add -A`. Never use `-A`/`-u` on this repo — always `add` specific paths.
 
-Not everything goes through this repo: `mackup.cfg` (tracked in the repo)
-configures Mackup to sync most GUI app preferences via iCloud instead — zsh is
-explicitly excluded from Mackup (`applications_to_ignore`) since it's handled
-here in git. When adding a new app's config file, prefer this git repo when
-the app isn't in Mackup's supported list (e.g. a new/niche app) — add the
-specific config file only, never a whole app-support directory, and check the
-file for embedded API keys/secrets first.
+Not everything goes through this repo directly. macOS **application**
+preferences (Rectangle, Finder, etc.) live in binary plists under
+`~/Library/Preferences/` and are captured as `defaults write` lines in the
+tracked `.macos` script, not by syncing the plists themselves. Mackup was
+evaluated for this and **rejected** (Sept 2025): macOS rewrites preference
+files atomically, which destroys Mackup's symlinks, and it silently failed to
+link even a single file. Do not reintroduce it.
+
+Apps whose settings do not appear in `defaults read <bundle-id>` cannot go in
+`.macos` at all. Raycast is the example — its config is SQLite under
+`~/Library/Application Support/com.raycast.macos/`. Those need per-app
+handling; see `~/.config/raycast/README.md`.
 
 Since the repo is shared across two machines, **always fetch and compare
 before committing new changes** — there's no `refs/remotes/origin/main`
