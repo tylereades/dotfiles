@@ -35,6 +35,7 @@ brew "oven-sh/bun/bun", trusted: true
 cask "wezterm"
 cask "alacritty"
 cask "obsidian"
+cask "raycast"
 cask "rectangle"
 cask "betterdisplay"
 cask "spotify"
