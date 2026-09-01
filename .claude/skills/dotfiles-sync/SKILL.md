@@ -89,6 +89,23 @@ adding a new CLI tool's config, or a GUI app's settings file like Handy's).
    - `~/Library/Preferences/<bundle-id>.plist` (macOS GUI apps, plist prefs)
    - directly in `$HOME` (dotfiles proper, e.g. `~/.zshrc`)
 
+2. **Decide the mechanism before adding anything.** Not every app belongs in
+   this repo as a tracked file:
+   - **Plain text config** (`~/.config/<app>/...`, dotfiles in `$HOME`) —
+     track it here. This is the normal case.
+   - **macOS plist prefs** (`~/Library/Preferences/<bundle-id>.plist`) — do
+     NOT track the plist. It is binary, and macOS rewrites it atomically,
+     which is also why Mackup-style symlinking was rejected. Capture the
+     settings as `defaults write` lines in `.macos` instead, the way
+     Rectangle's window bindings are. Discover the keys by running
+     `defaults read <bundle-id>` before and after changing the setting in
+     the app's UI and diffing the output.
+   - **Opaque or SQLite stores** (e.g. Raycast in
+     `~/Library/Application Support/com.raycast.macos/`) — cannot be captured
+     by either route. Use the app's own export feature and document the
+     manual setup steps in a README beside whatever *is* trackable (see
+     `.config/raycast/README.md`).
+
 2. **Inspect the file(s) before adding anything**:
    - Read the file. Flag anything that looks like an API key, token, or
      credential (e.g. Handy's `settings_store.json` has a
