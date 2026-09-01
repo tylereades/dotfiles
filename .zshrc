@@ -7,6 +7,7 @@ for file in ~/.zsh/*; do
 done
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles-work='/usr/bin/git --git-dir=$HOME/.dotfiles-work/ --work-tree=$HOME'
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
