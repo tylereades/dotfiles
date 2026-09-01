@@ -5,7 +5,7 @@ return {
       basedpyright = {
         settings = {
           basedpyright = {
-            disableOrganizeImports = true, -- Let Ruff handle this
+            -- disableOrganizeImports = true, -- Let Ruff handle this
             analysis = {
               -- THIS IS THE IMPORTANT SETTING
               -- "workspace" = analyzes everything (slow)

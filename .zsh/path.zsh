@@ -6,3 +6,4 @@
 
 #export PATH="$PATH":"$HOME/.cargo/bin"
 export PATH=/Users/tylerea/.cargo/bin:$PATH
+export PATH="$HOME/.bun/bin:$PATH"

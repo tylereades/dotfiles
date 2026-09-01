@@ -39,3 +39,5 @@ alias dirm='docker image rm'
 alias dcls='docker ps'
 alias dsp='docker system prune'
 alias dspf='docker system prune -f'
+
+alias claudecode='AWS_PROFILE=zillow-sandbox CLAUDE_CODE_USE_BEDROCK=1 DISABLE_PROMPT_CACHING=0 AWS_REGION=us-west-2 claude'

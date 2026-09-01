@@ -1,0 +1,25 @@
+# Secrets — never commit these to the personal dotfiles repo
+.zsh/secrets.zsh
+.zsh/zillow.zsh
+.zprofile-work
+.databrickscfg
+.databrickscfg.bak
+.tokens/
+.secrets/
+
+# Work-specific Claude Code files
+.claude/context/
+.claude/rules/
+.claude/projects/
+.claude/settings.local.json
+
+# Brewfile.work is tracked in the work repo
+Brewfile.work
+
+# SSH private keys (never)
+.ssh/id_*
+.ssh/tylerea-*
+.ssh/gitlab_com_rsa
+
+# macOS noise
+.DS_Store

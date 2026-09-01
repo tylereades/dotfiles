@@ -1,48 +1,42 @@
-tap 'homebrew/cask'
-tap 'homebrew/cask-versions'
-tap 'homebrew/bundle' # To be able to use run `brew bundle` to install all apps - https://medium.com/@satorusasozaki/automate-mac-os-x-configuration-by-using-brewfile-58a78ce5cc53
+tap "homebrew/bundle"
+tap "jesseduffield/lazygit"
+tap "oven-sh/bun"
 
+# Core CLI tools
+brew "fd"
+brew "fzf"
+brew "ripgrep"
+brew "jq"
+brew "wget"
+brew "htop"
+brew "git-lfs"
+brew "cookiecutter"
+brew "luarocks"
+brew "prettier"
 
-brew 'awscli'
-brew 'aws-cdk'
-brew 'aws-sam-cli'
-brew 'background-music'
-brew 'cookiecutter'
-brew 'databricks'
-brew 'fd'
-brew 'go'
-# brew 'hashicorp/tap/terraform'
-brew 'jesseduffield/lazygit/lazygit'
-brew 'jq'
-brew 'localstack/tap/localstack-cli'
-brew 'luarocks'
-brew 'neovim'
-brew 'nvm'
-brew 'pnpm'
-brew 'prettier'
-# brew 'pyenv'
-brew 'ripgrep'
-brew 'rover'
-brew 'fzf'
-brew 'rust'
-brew 'rust-analyzer'
-brew 'starship'
-brew 'tfenv'
-brew 'wget'
-# brew 'zsh-autosuggestions'
-# brew 'zsh-syntax-highlighting'
-brew 'uv'
+# Terminal / shell
+brew "starship"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+brew "lazygit"
+brew "neovim"
 
-cask 'alacritty'
-cask 'kitty'
-cask 'obsidian'
-cask 'rectangle'
-cask 'soundsource'
-cask 'spotify'
-cask 'visual-studio-code'
-cask 'google-chrome'
-cask 'postman'
-cask 'betterdisplay'
-cask 'wezterm'
-# cask 'docker'
-# cask 'docker-compose'
+# Languages / runtimes
+brew "go"
+brew "nvm"
+brew "pnpm"
+brew "uv"
+brew "rust"
+brew "rust-analyzer"
+brew "rustup"
+brew "oven-sh/bun/bun", trusted: true
+
+# Apps
+cask "wezterm"
+cask "alacritty"
+cask "obsidian"
+cask "rectangle"
+cask "betterdisplay"
+cask "spotify"
+cask "visual-studio-code"
+cask "google-chrome"
