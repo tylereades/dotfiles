@@ -73,7 +73,7 @@ Run this for each repo (personal, then work). Steps are identical for both — j
 | Brewfile (shared tools) | `Brewfile.work` |
 | `.gitconfig`, `.zshenv` | `.ssh/config` |
 | Personal Claude skills | `.claude/CLAUDE.md`, `settings.json` |
-| `~/.claude/context/dotfiles.md`, `glove80.md` | `.claude/context/` (Voyager, Databricks, etc.) |
+| `glove80.md` | `.claude/context/` (Voyager, Databricks, etc.) |
 | | `.claude/rules/`, work Claude skills |
 
 When in doubt: would this file contain Zillow-specific config, credentials, or internal tooling? → work repo. Generic dev tooling? → personal repo.
@@ -94,19 +94,17 @@ adding a new CLI tool's config, or a GUI app's settings file like Handy's).
    - **Plain text config** (`~/.config/<app>/...`, dotfiles in `$HOME`) —
      track it here. This is the normal case.
    - **macOS plist prefs** (`~/Library/Preferences/<bundle-id>.plist`) — do
-     NOT track the plist. It is binary, and macOS rewrites it atomically,
-     which is also why Mackup-style symlinking was rejected. Capture the
-     settings as `defaults write` lines in `.macos` instead, the way
-     Rectangle's window bindings are. Discover the keys by running
-     `defaults read <bundle-id>` before and after changing the setting in
-     the app's UI and diffing the output.
-   - **Opaque or SQLite stores** (e.g. Raycast in
-     `~/Library/Application Support/com.raycast.macos/`) — cannot be captured
-     by either route. Use the app's own export feature and document the
-     manual setup steps in a README beside whatever *is* trackable (see
-     `.config/raycast/README.md`).
+     NOT track the plist. It is binary, and macOS rewrites it atomically.
+     Capture the settings as `defaults write` lines in `.macos` instead (the
+     way Rectangle's window bindings are). Discover keys by running
+     `defaults read <bundle-id>` before and after changing a setting and
+     diffing the output.
+   - **Opaque or SQLite stores** (e.g. Raycast under
+     `~/Library/Application Support/com.raycast.macos/`) — use the app's own
+     export feature and document manual setup steps in a README beside
+     whatever *is* trackable (see `.config/raycast/README.md`).
 
-2. **Inspect the file(s) before adding anything**:
+3. **Inspect the file(s) before adding anything**:
    - Read the file. Flag anything that looks like an API key, token, or
      credential (e.g. Handy's `settings_store.json` has a
      `post_process_api_keys` block — currently empty, but would hold secrets
