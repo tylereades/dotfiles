@@ -2,7 +2,7 @@ export DOTFILES=$HOME/.dotfiles
 
 export ZSH_DIR=$HOME/.zsh
 
-for file in ~/.zsh/*; do
+for file in ~/.zsh/*.zsh; do
     source "$file"
 done
 
