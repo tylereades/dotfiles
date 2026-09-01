@@ -1,71 +1,82 @@
 ---
 name: dotfiles-sync
-description: Review, commit, and push changes in Tyler's bare-repo dotfiles (~/.dotfiles git-dir, $HOME work-tree, github.com/tylereades/dotfiles), or add a new file/folder to tracking for the first time. Use when Tyler asks to sync/commit/push his dotfiles, or to start tracking a new config file/app.
+description: Review, commit, and push changes in Tyler's bare-repo dotfiles. Handles both the personal repo (github.com/tylereades/dotfiles) and the work repo (gitlab.zgtools.net/tylerea/dotfiles-work). Use when Tyler asks to sync/commit/push his dotfiles, or to start tracking a new config file/app in either repo.
 ---
 
 # Dotfiles sync
 
-Tyler's dotfiles repo is a **bare repo**: git-dir `~/.dotfiles`, work-tree
-`$HOME`. There is no checked-out clone anywhere else — tracked files live at
-their real paths under `$HOME` (`.zshrc`, `.config/nvim/...`, even
-`Library/Application Support/<app>/...`).
+Tyler has **two** bare-repo dotfiles, both with work-tree `$HOME`:
 
-Every git command in this skill uses this exact form (no persistent shell
-alias — it doesn't survive across tool calls):
+| Repo | git-dir | Remote | Contains |
+|------|---------|--------|----------|
+| Personal | `~/.dotfiles/` | `github.com/tylereades/dotfiles` | shell, nvim, starship, wezterm, Brewfile, gitconfig |
+| Work | `~/.dotfiles-work/` | `gitlab.zgtools.net/tylerea/dotfiles-work` | AWS config, Databricks, SSH, Claude Code (CLAUDE.md, settings, context, rules, skills), Brewfile.work, setup script |
 
-```
+Commands for each (no persistent alias — spell it out every time):
+
+```bash
+# Personal
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME <command>
+
+# Work
+git --git-dir=$HOME/.dotfiles-work/ --work-tree=$HOME <command>
 ```
 
-`status.showUntrackedFiles = no` is set deliberately so random files in
-`$HOME` never show up in `status`/`diff`. **Never run `add -A` or `add -u` on
-this repo** — always `add` explicit paths. This is the main safety rail that
-keeps secrets/caches/personal data (recordings, history DBs, API keys in app
-config files) out of a public-ish repo, so don't work around it.
+When Tyler says "sync dotfiles" without specifying which, sync **both** — personal first, then work.
+
+`status.showUntrackedFiles = no` is set on both repos. **Never run `add -A` or `add -u`** — always add explicit paths. This keeps secrets, caches, and unrelated home-dir files out of both repos.
 
 ## Workflow A: sync pending changes
 
-1. **Fetch and check for remote-only commits first** — this repo is shared
+Run this for each repo (personal, then work). Steps are identical for both — just swap the git-dir.
+
+1. **Fetch and check for remote-only commits first** — the repo is shared
    between Tyler's personal and work laptops, so the other machine may have
    pushed since this machine last pulled.
 
-   ```
+   ```bash
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME fetch origin
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME rev-list --left-right --count HEAD...FETCH_HEAD
+   # repeat for .dotfiles-work/
    ```
 
    There's no `refs/remotes/origin/main` configured (only a fetch spec), so
    compare against `FETCH_HEAD`, not `origin/main`. If the right-hand count is
-   nonzero, origin has commits this machine doesn't — merge those in
-   (`git ... merge FETCH_HEAD`) before adding new local changes, so you don't
-   commit on top of stale state.
+   nonzero, merge before adding local changes.
 
 2. **Show what's changed**:
 
-   ```
+   ```bash
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME diff -- <changed files>
    ```
 
-   Summarize each changed file's diff for Tyler in a sentence or two — don't
-   just dump raw diffs unasked. For noisy generated files (lockfiles like
-   `.config/nvim/lazy-lock.json`), a `--stat` summary is enough.
+   Summarize each changed file's diff in a sentence or two. For noisy generated
+   files (e.g. `.config/nvim/lazy-lock.json`), a `--stat` summary is enough.
 
-3. **Stage only what's intended.** If the changes are unrelated to each other
-   (e.g. a shell tweak + an unrelated Brewfile addition), it's fine to bundle
-   them in one commit if that matches Tyler's existing style (check recent
-   `log --oneline` — his messages are short and direct, e.g. "add oil.lua",
-   "lazyvim updates"), or split them if he asks for that.
+3. **Stage only what's intended** and commit with a short direct message
+   (Tyler's style: "add oil.lua", "lazyvim updates", "update Brewfile").
 
-4. **Commit and push**:
+4. **Push both repos**:
 
-   ```
-   git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME commit -m "<short, direct message>"
+   ```bash
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME push origin main
+   git --git-dir=$HOME/.dotfiles-work/ --work-tree=$HOME push origin main
    ```
 
-   Confirm before pushing unless Tyler has already told you to push as part of
-   the same request — it's a shared/visible action.
+## Which repo does a new file belong in?
+
+| Goes in **personal** (GitHub) | Goes in **work** (GitLab) |
+|-------------------------------|---------------------------|
+| Shell config (zshrc, aliases, path) | `.zprofile-work`, `zillow.zsh` |
+| Editor (nvim, starship, wezterm) | `.aws/config`, `.databrickscfg` |
+| Brewfile (shared tools) | `Brewfile.work` |
+| `.gitconfig`, `.zshenv` | `.ssh/config` |
+| Personal Claude skills | `.claude/CLAUDE.md`, `settings.json` |
+| `~/.claude/context/dotfiles.md`, `glove80.md` | `.claude/context/` (Voyager, Databricks, etc.) |
+| | `.claude/rules/`, work Claude skills |
+
+When in doubt: would this file contain Zillow-specific config, credentials, or internal tooling? → work repo. Generic dev tooling? → personal repo.
 
 ## Workflow B: track a new file or folder for the first time
 
