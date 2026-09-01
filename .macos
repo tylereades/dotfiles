@@ -11,3 +11,14 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 
 killall Finder;
+
+# Rectangle - thirds and two-thirds for ultrawide
+# ctrl+opt+1/2/3 = left/center/right third, add shift for two-thirds
+osascript -e 'quit app "Rectangle"'
+defaults write com.knollsoft.Rectangle firstThird      -dict keyCode -int 18 modifierFlags -int 786432
+defaults write com.knollsoft.Rectangle centerThird     -dict keyCode -int 19 modifierFlags -int 786432
+defaults write com.knollsoft.Rectangle lastThird       -dict keyCode -int 20 modifierFlags -int 786432
+defaults write com.knollsoft.Rectangle firstTwoThirds  -dict keyCode -int 18 modifierFlags -int 917504
+defaults write com.knollsoft.Rectangle centerTwoThirds -dict keyCode -int 19 modifierFlags -int 917504
+defaults write com.knollsoft.Rectangle lastTwoThirds   -dict keyCode -int 20 modifierFlags -int 917504
+open -a Rectangle
