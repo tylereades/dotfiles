@@ -1,56 +1,55 @@
-# Setting Up Your New MacBook
+# dotfiles
 
-## Introduction
+Personal dotfiles for Tyler Eades. Uses a bare git repo with `$HOME` as the work tree.
 
-A special acknowledgment to [driesvints](https://github.com/driesvints/dotfiles).
+## New machine setup
 
-This repository was created with the goal of simplifying the setup and management process for my Mac. By utilizing this repository, I can avoid the tedious task of manually installing everything. The accompanying readme provides a comprehensive guide for setting up my preferred macOS configuration. Feel free to explore, learn from, or even adapt parts of it for your own dotfiles. I hope you find it both helpful and enjoyable!
+```bash
+# 1. Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-This repository is specifically tailored for setting up new Mac devices. However, if you're looking to start building your own dotfiles from scratch, you can find inspiration [here](https://github.com/driesvints/dotfiles).
+# 2. Clone
+git clone --bare https://github.com/tylereades/dotfiles.git ~/.dotfiles
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config core.excludesFile ~/.dotfiles-gitignore
 
-### Backing Up Your Data
+# 3. Git identity (untracked, per-machine)
+cp ~/.gitconfig-identity.example ~/.gitconfig-identity
+# edit ~/.gitconfig-identity — set name and email
 
-Before migrating to a new Mac, it's crucial to back up all your existing data. Make sure you've covered everything on the checklist below before proceeding with the migration:
+# 4. Install tools
+brew bundle
+git lfs install
 
-- Have you committed and pushed any changes/branches to your Git repositories?
-- Have you saved all important documents from non-iCloud directories?
-- Have you backed up work from apps that aren't synced through iCloud?
-- Have you exported important data from your local database?
-- Have you updated [mackup](https://github.com/lra/mackup) to the latest version and performed a `mackup backup`?
+# 5. Apply macOS/app preferences
+sh ~/.macos
+```
 
-### Setting Up Your Mac
+For work machine setup (AWS, Claude Code, Zillow tools) see the work dotfiles:
+`gitlab.zgtools.net/tylerea/dotfiles-work`
 
-After securely backing up your old Mac, you can now follow the installation instructions below to set up your new one:
+## Daily use
 
-1. Update macOS to the latest version through System Preferences.
-2. Generate a new public and private SSH key by running the following command:
+```bash
+# Status / diff
+dotfiles status
+dotfiles diff
 
-   ```zsh
-   curl https://raw.githubusercontent.com/Remi-deronzier/public-dotfiles/main/ssh.sh | sh -s "<your-email-address>"
-   ```
+# Stage and commit
+dotfiles add ~/.some/file
+dotfiles commit -m "chore: description"
+dotfiles push
+```
 
-3. Clone this repository to `~/.dotfiles` using the following command:
+`dotfiles` is aliased in `.zshrc`. In tool calls, spell it out:
+`/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME`
 
-   ```zsh
-   git clone git@github.com:Remi-deronzier/dotfiles.git ~/.dotfiles
-   ```
+## What's tracked
 
-4. Run the installation process with the following command:
+Shell (`zshrc`, `zsh/`), editor (`nvim/`), terminal (`wezterm`, `alacritty`), prompt (`starship`), git (`gitconfig`, `gitconfig-identity.example`), Brewfile, macOS prefs (`.macos`), Raycast scripts (`.config/raycast/`).
 
-   ```zsh
-   cd ~/.dotfiles && ./install.sh
-   ```
+## What's NOT here
 
-5. Once mackup is synced with your cloud storage, restore preferences by executing `mackup restore`.
-6. Restart your computer to finalize the setup process.
-
-Congratulations! Your Mac is now ready to be used!
-
-# Using on a second machine
-
-    ```zsh
-    alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-    git clone --bare git@github.com:tylereades/dotfiles.git $HOME/.dotfiles
-    dotfiles config --local status.showUntrackedFiles no
-    dotfiles checkout
-    ```
+- `~/.gitconfig-identity` — per-machine, fill from the `.example`
+- SSH private keys — regenerate on each machine
+- Work configs (AWS, Databricks, Claude Code work context) — in work dotfiles

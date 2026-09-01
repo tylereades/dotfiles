@@ -89,13 +89,7 @@ adding a new CLI tool's config, or a GUI app's settings file like Handy's).
    - `~/Library/Preferences/<bundle-id>.plist` (macOS GUI apps, plist prefs)
    - directly in `$HOME` (dotfiles proper, e.g. `~/.zshrc`)
 
-2. **Check whether Mackup already covers it instead.** Read
-   `git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME show HEAD:mackup.cfg` —
-   if the app is one of Mackup's supported apps and Tyler wants it synced via
-   iCloud rather than git, this repo isn't the right place for it. This git
-   repo is for: shell/editor/tool config, and apps Mackup doesn't support.
-
-3. **Inspect the file(s) before adding anything**:
+2. **Inspect the file(s) before adding anything**:
    - Read the file. Flag anything that looks like an API key, token, or
      credential (e.g. Handy's `settings_store.json` has a
      `post_process_api_keys` block — currently empty, but would hold secrets
