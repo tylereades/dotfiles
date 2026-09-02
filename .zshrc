@@ -20,6 +20,9 @@ SAVEHIST=10000
 setopt appendhistory
 
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
 
 # . "$HOME/.cargo/env"
 export PATH="$HOME/.local/bin:$PATH"
+
+alias project-intel-status='~/.claude/project-intel/status.sh'

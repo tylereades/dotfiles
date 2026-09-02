@@ -1,5 +1,6 @@
 # Secrets — never commit these to the personal dotfiles repo
 .zsh/secrets.zsh
+.envrc
 .zsh/zillow.zsh
 .zprofile-work
 .databrickscfg
