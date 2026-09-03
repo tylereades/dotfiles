@@ -13,6 +13,10 @@
 .claude/rules/
 .claude/projects/
 .claude/settings.local.json
+.claude/hooks/
+# Work-only skill. Deliberately narrow -- personal skills under
+# .claude/skills/ can still be tracked here.
+.claude/skills/dotfiles-sync/
 
 # Brewfile.work is tracked in the work repo
 Brewfile.work
