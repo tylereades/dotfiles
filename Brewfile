@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "jesseduffield/lazygit"
 tap "oven-sh/bun"
 
