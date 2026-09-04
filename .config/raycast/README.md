@@ -37,7 +37,8 @@ Nothing here is automated. Work down the list after cloning the dotfiles:
 
 ## Settings configured by hand
 
-Recreate these if there is no `.rayconfig` to import.
+Recreate these by hand on a new machine. Keep the list current — nothing else
+captures them.
 
 **Clipboard History** — hotkey `opt+cmd+V`, history 3 months, keep images on,
 ignore sensitive/concealed content on.
