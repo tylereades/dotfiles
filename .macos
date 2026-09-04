@@ -4,6 +4,10 @@ chflags nohidden ~/Library
 # show hidden files
 defaults write com.apple.finder AppleShowAllFiles YES
 
+# new windows open to home folder instead of Recents
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
 # show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
