@@ -2,6 +2,7 @@ tap "jesseduffield/lazygit"
 tap "oven-sh/bun"
 
 # Core CLI tools
+brew "mysides"
 brew "fd"
 brew "fzf"
 brew "ripgrep"

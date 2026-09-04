@@ -12,6 +12,10 @@ defaults write com.apple.finder ShowStatusBar -bool true
 
 killall Finder;
 
+# Finder sidebar pins
+mysides add projects    file://$HOME/projects
+mysides add screenshots file://$HOME/screenshots
+
 # Rectangle - thirds and two-thirds for ultrawide
 # ctrl+opt+1/2/3 = left/center/right third, add shift for two-thirds
 osascript -e 'quit app "Rectangle"'
