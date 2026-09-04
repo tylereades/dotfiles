@@ -33,11 +33,9 @@ brew "oven-sh/bun/bun", trusted: true
 
 # Apps
 cask "wezterm"
-cask "alacritty"
 cask "obsidian"
 cask "raycast"
 cask "rectangle"
 cask "betterdisplay"
 cask "spotify"
-cask "visual-studio-code"
 cask "google-chrome"
