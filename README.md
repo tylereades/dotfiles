@@ -52,4 +52,7 @@ Shell (`zshrc`, `zsh/`), editor (`nvim/`), terminal (`wezterm`), prompt (`starsh
 
 - `~/.gitconfig-identity` — per-machine, fill from the `.example`
 - SSH private keys — regenerate on each machine
+- Font files (~1 GB of `.ttf`) — installed by the font casks in the Brewfile,
+  never committed. `wezterm`/`kitty` reference the family `Iosevka Nerd Font Mono`;
+  if glyphs render wrong, check `fc-list | rg -i iosevka` for the family name.
 - Work configs (AWS, Databricks, Claude Code work context) — in work dotfiles

@@ -39,3 +39,8 @@ cask "rectangle"
 cask "betterdisplay"
 cask "spotify"
 cask "google-chrome"
+
+# Fonts (family names referenced by .wezterm.lua and .config/kitty/kitty.conf)
+cask "font-iosevka-nerd-font"
+cask "font-iosevka-term-nerd-font"
+cask "font-atkinson-hyperlegible"
