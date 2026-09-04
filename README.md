@@ -46,7 +46,7 @@ dotfiles push
 
 ## What's tracked
 
-Shell (`zshrc`, `zsh/`), editor (`nvim/`), terminal (`wezterm`, `alacritty`), prompt (`starship`), git (`gitconfig`, `gitconfig-identity.example`), Brewfile, macOS prefs (`.macos`), Raycast scripts (`.config/raycast/`).
+Shell (`zshrc`, `zsh/`), editor (`nvim/`), terminal (`wezterm`), prompt (`starship`), git (`gitconfig`, `gitconfig-identity.example`), Brewfile, macOS prefs (`.macos`), Raycast scripts (`.config/raycast/`).
 
 ## What's NOT here
 
