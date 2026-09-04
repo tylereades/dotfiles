@@ -7,30 +7,19 @@ be captured with `defaults write` in `.macos` the way Rectangle is.
 Split:
 
 - **Extensions** — sync automatically via the Raycast account. Nothing to track.
-- **Settings** — Settings > Advanced > *Export Settings & Data* produces a
-  `.rayconfig` covering hotkeys, aliases, quicklinks and snippets. Import on
-  the other machine from the same menu. This is the real mechanism; the
-  hand-written list further down is the fallback for when the export is stale.
+- **Settings** — **not exportable on the free tier.** *Export Settings & Data*
+  (Settings > Advanced) produces a `.rayconfig`, but it's a Pro feature and is
+  greyed out here. So the hand-written list below is the source of truth, not a
+  fallback — if you change a setting in Raycast, edit this file too or it's
+  lost on the next machine.
 - **Script commands** — plain shell, tracked here in `scripts/`.
 
-### Before exporting a `.rayconfig` into this repo
-
-**This repo is public** (`github.com/tylereades/dotfiles`). A `.rayconfig` is a
-single opaque archive of everything above — snippets (`;em` is a real email
-address), quicklinks, AI presets, and Clipboard History if it's left checked.
-
-So, two non-negotiables:
-
-1. **Uncheck Clipboard History** in the export dialog. It can hold passwords
-   and tokens.
-2. **Set a password** in the export dialog, which encrypts the archive. Never
-   commit an unencrypted `.rayconfig` here. Keep the password in the usual
-   place (see [[secrets]]); an encrypted export you can't decrypt is just a
-   dead 2 MB blob.
-
-Also worth knowing before committing one: it's a binary blob, so git can't diff
-it. Every re-export rewrites the whole file and the history grows accordingly.
-Re-export deliberately when settings actually change, not on a schedule.
+If a Pro subscription ever happens, two things to get right before a
+`.rayconfig` lands in this repo: **this repo is public**, and that archive
+bundles snippets (`;em` is a real email address), quicklinks, AI presets, and
+Clipboard History unless it's unchecked. Uncheck it, password-protect the
+export, and note that it's an undiffable binary blob that git will store in
+full on every re-export.
 
 ## Manual steps on a new machine
 
@@ -42,8 +31,8 @@ Nothing here is automated. Work down the list after cloning the dotfiles:
 3. Point Raycast at this repo's scripts:
    Settings > Extensions > Script Commands > *Add Directory* >
    `~/.config/raycast/scripts`
-4. Import the `.rayconfig` if one exists (it's password-protected — see above),
-   otherwise re-create the settings listed below by hand.
+4. Re-create the settings listed below by hand — there's no export to import
+   on the free tier.
 5. Run `sh ~/.macos` to apply Finder and Rectangle settings.
 
 ## Settings configured by hand
